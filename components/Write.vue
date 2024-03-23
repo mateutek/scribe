@@ -72,7 +72,7 @@
 
 <style scoped>
  #canvas {
-    background-color: rgba(164, 164, 164, 0.34);
+    background-color: rgba(164, 164, 164, 0.14);
     cursor: crosshair;
     width: 100%;
     height: 100%;

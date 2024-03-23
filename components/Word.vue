@@ -27,19 +27,26 @@
     canvasEnabled.value = value;
   }
 
+
+  function isVowel(char: string) {
+    return ['a', 'e', 'i', 'o', 'u', 'ó'].includes(char.toLowerCase());
+  }
+
 </script>
 
 <template>
     <n-flex justify="center" align="center" vertical>
       <div class="container">
-        <n-el :style="`fill: ${canvasEnabled ? 'rgba(110,110,110,0.34)' : 'var(--text-color-base)'}`" tag="svg" viewBox="0 0 80 20" class="word">
+        <n-el tag="svg" viewBox="0 0 80 20" class="word">
           <line x1="0%" y1="8%" x2="100%" y2="8%" style="stroke:rgba(255,0,0,0.5);stroke-width:0.5" />
           <!-- Red line 2 -->
           <line x1="0%" y1="36%" x2="100%" y2="36%" style="stroke:rgba(255,0,0,0.5);stroke-width:0.5" />
           <!-- Blue line -->
           <line x1="0%" y1="65.5%" x2="100%" y2="65.5%" style="stroke:rgba(0,0,255,0.5);stroke-width:0.5" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
-            {{currentWord}}
+          <text x="50%" y="65%" text-anchor="middle" :style="`opacity: ${canvasEnabled ? 0.54 : 1}`">
+            <tspan v-for="(char, index) in currentWord.split('')" :key="index" :style="isVowel(char) ? 'fill: red' : 'fill: var(--info-color)'">
+              {{ char }}
+            </tspan>
           </text>
           <!-- Red line 1 -->
         </n-el>
