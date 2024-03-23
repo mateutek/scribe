@@ -13,9 +13,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   pwa: {
     manifest: {
-      name: "Scribe",
-      short_name: "Scribe",
-      description: "",
+      name: "Skryba",
+      short_name: "Skryba",
+      description: "Naucz się pisać.",
       theme_color: "#18a058",
       lang: 'pl',
       orientation: 'landscape-primary',
