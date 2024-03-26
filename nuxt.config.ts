@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       theme_color: "#18a058",
       lang: 'pl',
       orientation: 'landscape-primary',
-      display: 'standalone',
+      display: 'minimal-ui',
       start_url: '/',
       icons: [
           {"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},

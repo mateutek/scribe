@@ -1,5 +1,6 @@
-<script setup lang="ts">
+,<script setup lang="ts">
   import type { Write } from '#components';
+  import type { CSSProperties } from 'vue';
   import words from '~/utils/words';
   const currentWord = ref('');
   const canvasEnabled = ref(false);
@@ -7,6 +8,25 @@
 
   function getRandomWord() {
     return words[Math.floor(Math.random() * words.length)];
+  }
+
+  const railStyle = ({ focused, checked }: {
+    focused: boolean
+    checked: boolean
+  }) => {
+    const style: CSSProperties = {}
+    if (checked) {
+      style.background = 'rgb(42, 148, 125)'
+      if (focused) {
+        style.boxShadow = '0 0 0 2px #d0305040'
+      }
+    } else {
+      style.background = 'rgb(145,145,145)'
+      if (focused) {
+        style.boxShadow = '0 0 0 2px #2080f040'
+      }
+    }
+    return style
   }
 
   const clearCanvas = () => {
@@ -29,7 +49,7 @@
 
 
   function isVowel(char: string) {
-    return ['a', 'e', 'i', 'o', 'u', 'ó'].includes(char.toLowerCase());
+    return ['a','ą', 'e', 'ę', 'i', 'o', 'u', 'ó', 'y'].includes(char.toLowerCase());
   }
 
 </script>
@@ -56,7 +76,7 @@
       </div>
       <n-button size="large" type="primary" @click="getNewWord">Nowe słowo</n-button>
       <n-form-item label-placement="left" label="Przełącz pisanie">
-        <n-switch v-model:value="canvasEnabled" @update:value="enableCanvas" />
+        <n-switch v-model:value="canvasEnabled" @update:value="enableCanvas" :rail-style="railStyle"/>
       </n-form-item>
     </n-flex>
 </template>
